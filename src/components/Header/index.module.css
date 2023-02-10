@@ -4,6 +4,12 @@
     padding: 12px 0;
 }
 
+.userInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+}
 
 .wrapper {
 	display: flex;
