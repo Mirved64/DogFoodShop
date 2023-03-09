@@ -46,6 +46,18 @@ class Api {
             headers: this._headers
         }).then(onResponce)
     }
+
+    // getReviewList(productId) {
+    //     return fetch(`${this._baseUrl}/products/review/${productId}`, {
+    //         headers: this._headers
+    //     }).then(onResponce)
+    // }
+
+    getUserById (userId) {
+        return fetch(`${this._baseUrl}/users/${userId}`, {
+            headers: this._headers
+        }).then(onResponce)
+    }
 }
 
 const config = {
