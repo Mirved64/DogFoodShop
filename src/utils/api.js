@@ -47,15 +47,17 @@ class Api {
         }).then(onResponce)
     }
 
-    // getReviewList(productId) {
-    //     return fetch(`${this._baseUrl}/products/review/${productId}`, {
-    //         headers: this._headers
-    //     }).then(onResponce)
-    // }
-
     getUserById (userId) {
         return fetch(`${this._baseUrl}/users/${userId}`, {
             headers: this._headers
+        }).then(onResponce)
+    }
+
+    addProductRewiew (productId, newReview) {
+        return fetch(`${this._baseUrl}/products/review/${productId}`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify(newReview)
         }).then(onResponce)
     }
 }

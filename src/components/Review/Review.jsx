@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
-
+import s from "./Review.module.css"
 
 function Review({ rating, text, author }) {
   
@@ -14,7 +14,7 @@ function Review({ rating, text, author }) {
   }, [author])
   
   return (
-    <div>
+    <div className={s.wrapper}>
       <h4>{authorReview.name}</h4>
       <span>
         <b>Оценка: </b>

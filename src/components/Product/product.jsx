@@ -116,7 +116,7 @@ export const Product = ({
           </div>
         </div>
       </div>
-      <ReviewList reviewList={reviews} author={author}/>
+      <ReviewList reviewList={reviews} author={author} />
     </>
   );
 };
