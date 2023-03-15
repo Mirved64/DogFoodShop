@@ -55,6 +55,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (token && debounceSearchQuery) {
+      handleRequest();
+    }
+  }, [token, debounceSearchQuery]);
+
+  useEffect(() => {
     setIsLoading(true);
     Promise.all([api.getProductList(), api.getUserInfo()])
       .then(([productsData, userData]) => {
@@ -80,12 +86,6 @@ function App() {
     setSearchQuery(inputText);
     handleRequest();
   };
-
-  useEffect(() => {
-    if (token && debounceSearchQuery) {
-      handleRequest();
-    }
-  }, [debounceSearchQuery, token]);
 
   const handleProductLike = useCallback(
     (product) => {

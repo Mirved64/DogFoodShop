@@ -12,8 +12,8 @@ const emailPattern = {
 };
 
 function LoginForm({ close, setUserName }) {
-  const { setCurrentUser } = useContext(UserContext);
 
+  const { setCurrentUser } = useContext(UserContext);
   const { setToken } = useContext(UserContext);
 
   const {

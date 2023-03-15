@@ -10,7 +10,7 @@ function Search({onSubmit: propsOnSubmit, onInput}) {
   return (
    <form className="search" onSubmit={propsOnSubmit}>
         <input type="text" className='search__input' placeholder='Поиск' onInput={handleInput}/>
-        <button className='search__btn'>
+        <button className='search__btn' onClick={(e) => e.preventDefault()}>
             <SearchIcon/>
             {false && <CloseIcon/>}
         </button>

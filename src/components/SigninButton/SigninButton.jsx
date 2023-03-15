@@ -27,7 +27,7 @@ export function SigninButton() {
 
   const redirect = useCallback(() => {
     navigate('/')
-}, [])
+  }, [])
 
   return (
     <>
@@ -38,8 +38,8 @@ export function SigninButton() {
         <LoginForm setUserName={setUserName} close={close} />
       </Modal>
       <Modal active={!!userName}>
-        <div>Здравствуйте, {userName}!</div>
-        <button onClick={redirect}>OK</button>
+        <h4>Здравствуйте, {userName}!</h4>
+        <button onClick={redirect}>Продолжить</button>
       </Modal>
     </>
   );

@@ -16,12 +16,24 @@ const passwordPattern = {
     "Пароль должен содержать минимум восемь символов, одну букву латинского алфавита и одну цифру",
 };
 
-function RegistrationForm() {
+function RegistrationForm({hide}) {
+  
   const [successModalActive, setSuccessModalActive] = useState(false);
+  const [errorModalActive, setErrorModalActive] = useState(false);
+  const [serverErrorModalActive, setServerErrorModalActive] = useState(false);
+  const [err, setErr] = useState({})
 
   useEffect(() => {
     setSuccessModalActive(false);
   }, [setSuccessModalActive]);
+
+  useEffect(() => {
+    setErrorModalActive(false);
+  }, [setErrorModalActive]);
+
+  useEffect(() => {
+    setServerErrorModalActive(false);
+  }, [setServerErrorModalActive]);
 
   const {
     register,
@@ -33,22 +45,18 @@ function RegistrationForm() {
 
   const onSubmit = useCallback((data) => {
     const { email, group, password } = data;
-    
     api
       .signUp(email, group, password)
-      .then((obj) => {
-        if (obj.ok) {
-          setSuccessModalActive(true);
+      .then(() => setSuccessModalActive(true))
+      .catch((obj) => {
+        if (obj === 'Ошибка: 409') {
+          setErrorModalActive(true)
         } else {
-          alert(obj.message);
+          setServerErrorModalActive(true)
         }
-      })
-      .catch(() => {
-        alert("Ошибка сервера");
       });
+      
   }, []);
-
-  const close = useCallback(() => setSuccessModalActive(false), []);
 
   return (
     <>
@@ -82,9 +90,34 @@ function RegistrationForm() {
         <button>Зарегистрироваться</button>
       </form>
 
-      <Modal active={successModalActive} setActive={close}>
-        Вы успешно зарегистрировались!
-        <button onClick={close}>OK</button>
+      <Modal active={successModalActive} setActive={setSuccessModalActive}>
+        <h4>Вы успешно зарегистрировались!</h4>
+        <button 
+          onClick={() => {
+            setSuccessModalActive(false)
+            hide()
+            }} > 
+          OK
+        </button>
+      </Modal>
+      <Modal active={errorModalActive} setActive={setErrorModalActive}>
+        <h4>Пользователь с указанным email уже существует</h4>
+        <button 
+          onClick={() => {
+            setErrorModalActive(false)
+            }}>
+          OK
+        </button>
+      </Modal>
+      <Modal active={serverErrorModalActive} setActive={setServerErrorModalActive}>
+        <h4>Проблемы с сервером</h4>
+        <button 
+          onClick={() => {
+            setServerErrorModalActive(false)
+            hide()
+            }}>
+          OK
+        </button>
       </Modal>
     </>
   );
