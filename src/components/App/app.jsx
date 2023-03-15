@@ -30,6 +30,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTabId, setSelectedTabId] = useState("cheap");
   const [token, setToken] = useState(null);
+  const [total, setTotal] = useState(0)
 
   const navigate = useNavigate();
 
@@ -38,7 +39,8 @@ function App() {
     api
       .search(searchQuery)
       .then((searchResult) => {
-        setCards(searchResult);
+        setCards(searchResult)
+        setTotal(searchResult.length)
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -132,6 +134,8 @@ function App() {
             setFavorites,
             searchQuery,
             setSearchQuery,
+            total,
+            setTotal
           }}
         >
           <Header>

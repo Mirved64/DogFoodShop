@@ -12,6 +12,8 @@ const CardList = ({cards}) => {
 	const {isLoading} = useContext(UserContext);
 	const {selectedTabId} = useContext(SortContext);
 
+	
+
 	return (
 		<>
 			{!cards.length && !isLoading && <NotFound buttonText='Назад' title="Простите по вашему запросу ничего не найдено" buttonAction={()=>navigate(-1)}/>}
