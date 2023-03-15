@@ -55,7 +55,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (token && debounceSearchQuery) {
+    if (token) {
       handleRequest();
     }
   }, [token, debounceSearchQuery]);
