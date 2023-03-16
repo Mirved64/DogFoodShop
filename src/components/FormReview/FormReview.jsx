@@ -18,7 +18,6 @@ function FormReview({setActive, setNewReviewList}) {
     api.addProductRewiew(productId, newReview)
       .then((reviewData) => {
         setReview(reviewData)
-        
         setNewReviewList(reviewData.reviews)
       })
       .catch(err => console.log(err))
@@ -30,7 +29,7 @@ function FormReview({setActive, setNewReviewList}) {
     
 
   return (
-    <form >
+    <form onSubmit={newReviewPost}>
       <span>Оставьте отзыв на товар</span>
 
       <label>Рейтинг товара</label>
@@ -52,7 +51,7 @@ function FormReview({setActive, setNewReviewList}) {
         onChange={(e) => setReview({...review, text: e.target.value})}
       ></textarea>
 
-      <button className={s.btn} onClick={newReviewPost}>Отправить отзыв</button>
+      <button className={s.btn}>Отправить отзыв</button>
     </form>
   );
 }

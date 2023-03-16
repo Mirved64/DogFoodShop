@@ -17,7 +17,7 @@ function ReviewList({reviewList}) {
     <>
       <div>
         <button className={s.btn} onClick={modalOn}>Написать отзыв</button>
-        {reviewList.map((review) => <Review key={review._id} {...review} />
+        {newReviewList.map((review) => <Review key={review._id} {...review} />
         )}
       </div>
       <Modal active={modalActive} setActive={setModalActive} >
@@ -26,7 +26,6 @@ function ReviewList({reviewList}) {
           setNewReviewList={setNewReviewList} 
         ></FormReview>
       </Modal>
-      
     </>
   );
 }
