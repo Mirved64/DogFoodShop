@@ -162,7 +162,7 @@ function App() {
 
               <Route
                 path="/product/:productId"
-                element={<ProductPage isLoading={isLoading} />}
+                element={token && <ProductPage isLoading={isLoading} />}
               />
               <Route path="/signup" element={<MainPage />} />
               <Route path="/login" element={<MainPage />} />
