@@ -7,7 +7,7 @@ export const NotFound = ( {children, title, buttonText = "На главную", 
 	return (
 		<>
 			<div className={s.notFound}>
-				<img src={notFound} className={s.image} aria-hidden="true" alt="" />
+				<img src={notFound} className={s.image} aria-hidden="true" alt="Not Found" />
 				<h1 className={s.title}>{title}</h1>
 				{children && children}
 				{buttonAction

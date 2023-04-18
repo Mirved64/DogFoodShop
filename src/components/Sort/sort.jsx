@@ -1,10 +1,13 @@
 import cn from "classnames";
 import "./index.css";
+
 const Sort = ({currentSort, tabs = [], onChangeSort}) => {
+	
 	const handleClick = (e, tab) => {
 		e.preventDefault(); 
 		onChangeSort(tab.id)
 	}
+	
 	return (
 		<div className="sort content__sort">
 			{tabs.map(tab => (
