@@ -30,7 +30,7 @@ export const ProductPage = () => {
       setProduct(updateProduct);
     });
   }, [product, handleLike, setProduct]);
-
+  
   return (
     <>
       <div className="content__cards">
